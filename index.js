@@ -33,11 +33,12 @@ TemperatureSensor.prototype.getIntValue = function(){
 TemperatureSensor.prototype.enableEvents = function () {
   var _self = this;
   var value;
-
-  setInterval(()=>{
-    value = this.getBasicValue();
-    _self.emit('Measurement',value);
-  }, 200); // Tomar mediciones cada 200 ms
+  if (!this.event_interval) {
+    this.event_interval = setInterval(()=>{
+      value = this.getBasicValue();
+      _self.emit('medicion',value);
+    }, 500); // 500ms muestreo
+  }
 }
 
 TemperatureSensor.prototype.when = function(value, callback){
@@ -47,12 +48,13 @@ TemperatureSensor.prototype.when = function(value, callback){
       if (this.temp.getIntValue() == value) {
         callback();
       }
-    }, 400); // Tomar mediciones cada 400ms
+    }, 500); // Tomar mediciones cada 500ms
   }
 }
 
 TemperatureSensor.prototype.release = function() {
   clearInterval(this.interval);
+  clearInterval(this.event_interval);
   this.temp.release();
 }
 
