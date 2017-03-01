@@ -12,7 +12,9 @@
   ],
   "author": "yovany.lg@gmail.com",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "bindings": "^1.2.1"
+  },
   "gypfile": true,
   "devDependencies": {
     "babel-eslint": "^7.1.1",
