@@ -4,14 +4,14 @@ const inherits = require('util').inherits;
 
 /**
  * Creates an instance of temperature.
- * @param {int} _port The port number where this component us connected.
- * @param {int} _add The second argument.
+ * @param {int} port The port number where this component us connected.
+ * @param {int} add The second argument.
  * @returns {int} The sum of the two numbers.
  */
-function TemperatureSensor(_port, _add = 0) {
+function TemperatureSensor(port, add = 0) {
   const self = this;
   EventEmitter.call(this);
-  this.temp = new TSensor(_port, _add);
+  this.temp = new TSensor(port, add);
 
   process.on('SIGINT', () => {
     self.temp.release();
