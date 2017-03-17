@@ -92,9 +92,9 @@ void ADS1015::selectInput(uint8_t _inputAdd, uint8_t _gain){
     wBuf[0] = ADS1015_CONFIG_REG;
     // -- Upper Byte, set the input channel and input gain;
     config_high |= (uint8_t)(inputAdd << 4) | (uint8_t)(inputGain << 1);
-    // - 
+    // -
     config_high |= ADS1015_CONF_REG_OS_SINGLE;
- 
+
     wBuf[1] = config_high;
     // - Lower Byte => 128 SPS, Disable Comparator
     wBuf[2] = config_low;
@@ -105,7 +105,7 @@ void ADS1015::selectInput(uint8_t _inputAdd, uint8_t _gain){
 
 /**
  * Returns the ADC Conversion Register, returns a 12 bit register.
- * @return 
+ * @return
  */
 int16_t ADS1015::readRawInput(){
     selectModule();
@@ -158,5 +158,5 @@ void ADS1015::bcm_end(){
 }
 
 void ADS1015::release(){
-    bcm_end();
+    // bcm_end();
 }

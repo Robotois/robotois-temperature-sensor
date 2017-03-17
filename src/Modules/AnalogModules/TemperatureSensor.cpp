@@ -1,7 +1,7 @@
-/* 
+/*
  * File:   TempSensor.cpp
  * Author: yova
- * 
+ *
  * Created on 26 de mayo de 2016, 03:33 PM
  */
 
@@ -47,7 +47,7 @@ void TemperatureSensor::selectPort(uint8_t _port){
  * Temeperatura actual del sensor en grados centigrados. Se proporciona la maxima
  * resolucion que se puede obtener, en este caso son 11 bits para valores mayores que 0
  * grados.
- * @return 
+ * @return
  */
 float TemperatureSensor::getValue(){
     selectPort(inputPort);
@@ -60,7 +60,7 @@ float TemperatureSensor::getValue(){
 // * Temperatura en grados centigrados, pero se acota la resolucion a dos decimales.
 // * Con esto se obtiene una medicion "basica", puede ser usada para mostrar la temperatura
 // * en al display LCD por ejemplo
-// * @return 
+// * @return
 // */
 //float TemperatureSensor::getBasicValue(){
 //    selectPort(inputPort);
@@ -72,7 +72,7 @@ float TemperatureSensor::getValue(){
 /**
  * Se obtiene la Temperatura en grados centigrados, pero solo se obtiene la parte entera
  * de la medicion, esta medicion es aun mas simple que getBasicValue.
- * @return 
+ * @return
  */
 int16_t TemperatureSensor::getIntValue(){
     selectPort(inputPort);
@@ -82,7 +82,7 @@ int16_t TemperatureSensor::getIntValue(){
 }
 
 void TemperatureSensor::release(){
-    printf("[TemperatureSensor] => Released\n");
-    analogModule->release();
+    // analogModule->release();
     delete analogModule;
+    printf("[TemperatureSensor] => Released\n");
 }
