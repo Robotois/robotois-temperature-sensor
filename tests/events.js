@@ -1,19 +1,19 @@
-var _temp = require('../index'),
-  temp = new _temp(1);
+const Temperature = require('../index');
+
+const temp = new Temperature(1);
 temp.enableEvents();
 
-temp.on('medicion',function(value){
-  console.log("Temperatura medida: "+value);
+temp.on('medicion', (value) => {
+  /* eslint-disable no-console */
+  console.log(`Temperatura medida: ${value}`);
 });
 
-setInterval(()=>{ // Proceso en estado ocioso
-  true;
-},10000);
+setInterval(() => {}, 10000);
 
-process.on('SIGTERM', function () {
+process.on('SIGTERM', () => {
   process.exit();
 });
 
-process.on('SIGINT', function () {
+process.on('SIGINT', () => {
   process.exit();
 });
