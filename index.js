@@ -38,8 +38,8 @@ TemperatureSensor.prototype.getIntValue = function getIntValue() {
 TemperatureSensor.prototype.enableEvents = function enableEvents() {
   const self = this;
   let value;
-  if (!this.event_interval) {
-    this.event_interval = setInterval(() => {
+  if (!this.eventInterval) {
+    this.eventInterval = setInterval(() => {
       value = this.getBasicValue();
       self.emit('medicion', value);
     }, 500); // 500ms muestreo
@@ -61,7 +61,7 @@ TemperatureSensor.prototype.when = function when(value, callback) {
 
 TemperatureSensor.prototype.release = function release() {
   clearInterval(this.interval);
-  clearInterval(this.event_interval);
+  clearInterval(this.eventInterval);
   this.temp.release();
 };
 
