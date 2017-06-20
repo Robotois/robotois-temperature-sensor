@@ -36,31 +36,25 @@ TemperatureSensor.prototype.getIntValue = function getIntValue() {
 };
 
 TemperatureSensor.prototype.enableEvents = function enableEvents() {
-  const self = this;
-  let value;
   if (!this.eventInterval) {
+    let value;
     this.eventInterval = setInterval(() => {
       value = this.getBasicValue();
-      self.emit('medicion', value);
-    }, 500); // 500ms muestreo
+      this.emit('medicion', value);
+    }, 750); // 750ms muestreo
   }
 };
 
 TemperatureSensor.prototype.when = function when(value, callback) {
-  if (!this.interval) {
-    this.interval = setInterval(() => { // Tomar mediciones cada 200ms
-      /* eslint-disable no-console */
-      console.log(`Temperatura: ${this.temp.getIntValue()}`);
-      /* eslint-disable eqeqeq */
-      if (this.temp.getIntValue() == value) {
-        callback();
-      }
-    }, 500); // Tomar mediciones cada 500ms
-  }
+  this.enableEvents();
+  this.on('medicion', (tempValue) => {
+    if (value == tempValue) {
+      callback();
+    }
+  });
 };
 
 TemperatureSensor.prototype.release = function release() {
-  clearInterval(this.interval);
   clearInterval(this.eventInterval);
   this.temp.release();
 };

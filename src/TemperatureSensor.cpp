@@ -82,7 +82,6 @@ int16_t TemperatureSensor::getIntValue(){
 }
 
 void TemperatureSensor::release(){
-    // analogModule->release();
     delete analogModule;
     printf("[TemperatureSensor] => Released\n");
 }

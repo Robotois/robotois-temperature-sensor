@@ -3,7 +3,7 @@
 
 #include <node.h>
 #include <node_object_wrap.h>
-#include "src/Modules/AnalogModules/TemperatureSensor.h"
+#include "../TemperatureSensor.h"
 
 class TempWrapper : public node::ObjectWrap {
 public:

@@ -2,8 +2,8 @@
   "targets": [
     {
       "target_name": "TemperatureSensor",
-      "sources": [ "TemperatureSensor.cpp","TempWrapper.cpp",
-      "src/Modules/AnalogModules/TemperatureSensor.cpp",
+      "sources": [ "src/Wrapper/TemperatureSensor.cpp","src/Wrapper/TempWrapper.cpp",
+      "src/TemperatureSensor.cpp",
       "src/Libraries/ADS1015/ADS1015.cpp",
       "src/Libraries/Timer/AccurateTiming.cpp"
       ],

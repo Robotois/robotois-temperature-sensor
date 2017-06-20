@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   TempSensor.h
  * Author: yova
  *
@@ -10,25 +10,24 @@
 
 #include <stdlib.h>
 
-#include "../../Libraries/ADS1015/ADS1015.h"
+#include "Libraries/ADS1015/ADS1015.h"
 
 class TemperatureSensor {
 public:
     TemperatureSensor(uint8_t _addr = 0x00);
     TemperatureSensor(const TemperatureSensor& orig);
     virtual ~TemperatureSensor();
-    
+
     void selectPort(uint8_t _port);
     float getValue();
 //    float getBasicValue();
     int16_t getIntValue();
-    
+
     void release();
 private:
     ADS1015 *analogModule;
-    uint8_t inputPort;    
+    uint8_t inputPort;
     float tempRatio;
 };
 
 #endif	/* TEMPSENSOR_H */
-
