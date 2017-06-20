@@ -10,7 +10,7 @@
 
 #include <stdlib.h>
 
-#include "Libraries/ADS1015/ADS1015.h"
+#include "Libraries/robotois-ADS1015/ADS1015.h"
 
 class TemperatureSensor {
 public:

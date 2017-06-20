@@ -1,4 +1,4 @@
-const Temperature = require('../index');
+const Temperature = require('../../index');
 
 const temp = new Temperature(1);
 
@@ -8,8 +8,6 @@ setInterval(() => {
   /* eslint-disable no-console */
   console.log(`Int: ${temp.getIntValue()}`);
 }, 1000);
-
-setInterval(() => {}, 10000);
 
 process.on('SIGTERM', () => {
   process.exit();

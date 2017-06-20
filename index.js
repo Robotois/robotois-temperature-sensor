@@ -3,6 +3,21 @@ const EventEmitter = require('events').EventEmitter;
 const inherits = require('util').inherits;
 
 /**
+ * Conditional callbacks
+ * @param  {Bool} cond      Condition sentence that is evaluated
+ * @param  {Func} onTrueCB  Callback that will be executed when the condition is evaluated true
+ * @param  {Func} onFalseCB Callback that will be executed when the condition is evaluated false
+ * @return {[type]}           [description]
+ */
+function callbacks(cond, onTrueCB, onFalseCB) {
+  if (cond) {
+    onTrueCB();
+  } else {
+    onFalseCB();
+  }
+}
+
+/**
  * Creates an instance of TemperatureSensor.
  * @param {int} port The port number where this component us connected.
  * @param {int} add The second argument.
@@ -37,21 +52,46 @@ TemperatureSensor.prototype.getIntValue = function getIntValue() {
 
 TemperatureSensor.prototype.enableEvents = function enableEvents() {
   if (!this.eventInterval) {
-    let value;
     this.eventInterval = setInterval(() => {
-      value = this.getBasicValue();
-      this.emit('medicion', value);
+      this.emit('medicion', this.temp.getIntValue());
     }, 1000); // 1000ms muestreo
   }
 };
 
-TemperatureSensor.prototype.when = function when(value, callback) {
+TemperatureSensor.prototype.when = function when(operator, params) {
   this.enableEvents();
-  this.on('medicion', (tempValue) => {
-    if (value == tempValue) {
-      callback();
-    }
-  });
+  switch (operator) {
+    case 'equals':
+      this.on('medicion', (tempValue) => {
+        callbacks((tempValue == params.value), params.onTrue, params.onFalse);
+      });
+      break;
+    case 'inRange':
+      this.on('medicion', (tempValue) => {
+        callbacks(
+          (tempValue >= params.min && tempValue <= params.max),
+          params.onTrue,
+          params.onFalse);
+      });
+      break;
+    case 'lessThan':
+      this.on('medicion', (tempValue) => {
+        callbacks(
+          (tempValue < params.value),
+          params.onTrue,
+          params.onFalse);
+      });
+      break;
+    case 'moreThan':
+      this.on('medicion', (tempValue) => {
+        callbacks(
+          (tempValue > params.value),
+          params.onTrue,
+          params.onFalse);
+      });
+      break;
+    default:
+  }
 };
 
 TemperatureSensor.prototype.release = function release() {

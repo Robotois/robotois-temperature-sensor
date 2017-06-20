@@ -1,0 +1,15 @@
+{
+  "name": "practicas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "displayLCD.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "robotois-lcd-display": "git+https://github.com/Robotois/robotois-lcd-display.git"
+  }
+}
