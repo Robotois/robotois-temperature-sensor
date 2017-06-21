@@ -1,6 +1,0 @@
-[submodule "src/Libraries/robotois-ADS1015"]
-	path = src/Libraries/robotois-ADS1015
-	url = https://github.com/Robotois/robotois-ADS1015.git
-[submodule "src/Libraries/robotois-timer"]
-	path = src/Libraries/robotois-timer
-	url = https://github.com/Robotois/robotois-timer.git
