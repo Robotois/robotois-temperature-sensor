@@ -1,8 +1,7 @@
 #include <cstdio>
 #include <bcm2835.h>
 
-#include "./Libraries/robotois-ADS1015/ADS1015.h"
-#include "./Libraries/robotois-timer/AccurateTiming.h"
+#include "./libraries/robotois-timer/AccurateTiming.h"
 #include "./TemperatureSensor.h"
 
 void i2c_init();

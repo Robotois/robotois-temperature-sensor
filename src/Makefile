@@ -17,10 +17,10 @@ all: ads.o temp.o timer.o main.o
 
 main.o: test.cpp
 	$(CC) $(COMPILE_FLAGS) test.cpp
-ads.o: Libraries/robotois-ADS1015/ADS1015.cpp Libraries/robotois-ADS1015/ADS1015.h
-	$(CC) $(COMPILE_FLAGS) Libraries/robotois-ADS1015/ADS1015.cpp
-timer.o: Libraries/robotois-timer/AccurateTiming.cpp Libraries/robotois-timer/AccurateTiming.h
-	$(CC) $(COMPILE_FLAGS) Libraries/robotois-timer/AccurateTiming.cpp
+ads.o: libraries/robotois-ADS1015/ADS1015.cpp libraries/robotois-ADS1015/ADS1015.h
+	$(CC) $(COMPILE_FLAGS) libraries/robotois-ADS1015/ADS1015.cpp
+timer.o: libraries/robotois-timer/AccurateTiming.cpp libraries/robotois-timer/AccurateTiming.h
+	$(CC) $(COMPILE_FLAGS) libraries/robotois-timer/AccurateTiming.cpp
 temp.o: TemperatureSensor.cpp TemperatureSensor.h
 	$(CC) $(COMPILE_FLAGS) TemperatureSensor.cpp
 
