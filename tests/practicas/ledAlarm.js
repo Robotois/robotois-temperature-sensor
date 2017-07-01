@@ -10,10 +10,10 @@ Practica con alarma de LED usando 'equals', en donde se enciende el LED cuando e
 temperatura devuelve un valor especifico
  */
 // temp.equals(27,
-//   (value) => {
+//   () => {
 //     led.turnOn();
 //   },
-//   (value) => {
+//   () => {
 //     led.turnOff();
 //   }
 // );
@@ -23,10 +23,10 @@ Practica con alarma de LED usando 'equals', en donde se hace parpadear el LED cu
 temperatura devuelve un valor especifico
  */
 // temp.equals(26,
-//   (value) => {
+//   () => {
 //     led.blink(true);
 //   },
-//   (value) => {
+//   () => {
 //     led.blink(false);
 //   }
 // );
@@ -36,10 +36,10 @@ Practica con alarma de LED usando 'moreThan', en donde se enciende el LED cuando
 de temperatura es mayor que el valor especificado
  */
 // temp.moreThan(26,
-//   (value) => {
+//   () => {
 //     led.turnOn();
 //   },
-//   (value) => {
+//   () => {
 //     led.turnOff();
 //   }
 // );
@@ -49,10 +49,10 @@ Practica con alarma de LED usando 'moreThan', en donde se hace parpadear el LED 
 de temperatura es mayor que el valor especificado
  */
 // temp.moreThan(26,
-//   (value) => {
+//   () => {
 //     led.blink(true);
 //   },
-//   (value) => {
+//   () => {
 //     led.blink(false);
 //   }
 // );
@@ -62,10 +62,10 @@ Practica con alarma de LED usando 'between', en donde se enciende el LED cuando 
 de temperatura se encuentra dentro del rango [min-max]
  */
 // temp.between(25, 26,
-//   (value) => {
+//   () => {
 //     led.turnOn();
 //   },
-//   (value) => {
+//   () => {
 //     led.turnOff();
 //   }
 // );
@@ -75,10 +75,10 @@ Practica con alarma de LED usando 'between', en donde se hace parpadear el LED c
 de temperatura se encuentra dentro del rango [min-max]
  */
 temp.between(25, 26,
-  (value) => {
+  () => {
     led.blink(true);
   },
-  (value) => {
+  () => {
     led.blink(false);
   }
 );

@@ -19,7 +19,7 @@ del sensor y cuando se tiene un valor especifico se activa la alarma del LCD
  */
 // temp.equals(27,
 //   (value) => {
-//     lcd.displaySensor({value, text:'Temp:', unit: 'C'});
+//     lcd.displaySensor({value, text:'temperatura:', unit: 'C'});
 //     lcd.blinkBacklight(true);
 //   },
 //   (value) => {
