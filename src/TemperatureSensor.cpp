@@ -13,7 +13,7 @@
 
 TemperatureSensor::TemperatureSensor(uint8_t _addr) {
     analogModule = new ADS1015(_addr);
-    tempRatio = 25.0f/0.750f;
+    tempRatio = 1.0f/0.010f;
 }
 
 TemperatureSensor::TemperatureSensor(const TemperatureSensor& orig) {
@@ -26,16 +26,16 @@ void TemperatureSensor::selectPort(uint8_t _port){
     inputPort = _port;
     switch(inputPort){
         case 0x01:
-            analogModule->selectInput(ADS1015_SENSOR1,ADS1015_2048_GAIN);
+            analogModule->selectInput(ADS1015_SENSOR1,ADS1015_512_GAIN);
             break;
         case 0x02:
-            analogModule->selectInput(ADS1015_SENSOR2,ADS1015_2048_GAIN);
+            analogModule->selectInput(ADS1015_SENSOR2,ADS1015_512_GAIN);
             break;
         case 0x03:
-            analogModule->selectInput(ADS1015_SENSOR3,ADS1015_2048_GAIN);
+            analogModule->selectInput(ADS1015_SENSOR3,ADS1015_512_GAIN);
             break;
         case 0x04:
-            analogModule->selectInput(ADS1015_SENSOR4,ADS1015_2048_GAIN);
+            analogModule->selectInput(ADS1015_SENSOR4,ADS1015_512_GAIN);
             break;
         default:
             printf("Error selecting the Analog Port...\n");
@@ -52,7 +52,6 @@ void TemperatureSensor::selectPort(uint8_t _port){
 float TemperatureSensor::getValue(){
     selectPort(inputPort);
     float reading = analogModule->readInput();
-//    printf("Reading: %0.2f\n",reading);
     return reading*tempRatio;
 }
 
@@ -77,8 +76,13 @@ float TemperatureSensor::getValue(){
 int16_t TemperatureSensor::getIntValue(){
     selectPort(inputPort);
     float reading = analogModule->readInput();
-//    printf("Reading: %0.2f\n",reading);
     return (int16_t)(std::round(reading*tempRatio));
+}
+
+float TemperatureSensor::getVoltage() {
+    selectPort(inputPort);
+    float reading = analogModule->readInput();
+    return reading;
 }
 
 void TemperatureSensor::release(){

@@ -12,6 +12,7 @@ int main(int argc, char const *argv[]) {
   TemperatureSensor temperature;
   while (true) {
     temperature.selectPort(1);
+//    printf("getVoltage: %f\n", temperature.getVoltage());
     printf("getValue: %f, getIntValue: %d\n",
       temperature.getValue(),
       temperature.getIntValue());

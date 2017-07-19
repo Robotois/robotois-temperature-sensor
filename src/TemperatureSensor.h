@@ -21,6 +21,7 @@ public:
     void selectPort(uint8_t _port);
     float getValue();
 //    float getBasicValue();
+    float getVoltage();
     int16_t getIntValue();
 
     void release();
