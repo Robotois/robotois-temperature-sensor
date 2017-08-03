@@ -8,19 +8,16 @@ OBJECTS = \
 	test.o \
 	ADS1015.o \
 	TemperatureSensor.o \
-	AccurateTiming.o
 
 #OBJECTS = $(subst .cpp,.o,$(SOURCES))
 
-all: ads.o temp.o timer.o main.o
+all: ads.o temp.o main.o
 	$(CC) $(LINKER_FLAGS) -o runner $(OBJECTS) $(LIBS)
 
 main.o: test.cpp
 	$(CC) $(COMPILE_FLAGS) test.cpp
 ads.o: libraries/robotois-ADS1015/ADS1015.cpp libraries/robotois-ADS1015/ADS1015.h
 	$(CC) $(COMPILE_FLAGS) libraries/robotois-ADS1015/ADS1015.cpp
-timer.o: libraries/robotois-timer/AccurateTiming.cpp libraries/robotois-timer/AccurateTiming.h
-	$(CC) $(COMPILE_FLAGS) libraries/robotois-timer/AccurateTiming.cpp
 temp.o: TemperatureSensor.cpp TemperatureSensor.h
 	$(CC) $(COMPILE_FLAGS) TemperatureSensor.cpp
 

@@ -12,7 +12,10 @@
 #include <cmath>
 #include <unistd.h>
 #include "ADS1015.h"
-#include "../robotois-timer/AccurateTiming.h"
+//#include <vector>
+
+#include <thread>
+#include <chrono>
 
 ADS1015::ADS1015(uint8_t _addr) {
     uint8_t result;
@@ -100,7 +103,7 @@ void ADS1015::selectInput(uint8_t _inputAdd, uint8_t _gain){
     wBuf[2] = config_low;
 
     bcm2835_i2c_write(wBuf, 3);
-    mDelay(1);
+    std::this_thread::sleep_for(std::chrono::microseconds(500));
 }
 
 /**

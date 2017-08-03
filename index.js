@@ -54,7 +54,7 @@ TemperatureSensor.prototype.enableEvents = function enableEvents() {
   if (!this.eventInterval) {
     this.eventInterval = setInterval(() => {
       this.emit('medicion', this.temp.getIntValue());
-    }, 1000); // 1000ms muestreo
+    }, 500); // 1000ms muestreo
   }
 };
 

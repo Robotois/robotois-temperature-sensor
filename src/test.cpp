@@ -1,7 +1,8 @@
 #include <cstdio>
 #include <bcm2835.h>
+#include <thread>
+#include <chrono>
 
-#include "./libraries/robotois-timer/AccurateTiming.h"
 #include "./TemperatureSensor.h"
 
 void i2c_init();
@@ -10,13 +11,12 @@ void i2c_end();
 int main(int argc, char const *argv[]) {
   i2c_init();
   TemperatureSensor temperature;
+  temperature.selectPort(3);
   while (true) {
-    temperature.selectPort(1);
-//    printf("getVoltage: %f\n", temperature.getVoltage());
     printf("getValue: %f, getIntValue: %d\n",
       temperature.getValue(),
       temperature.getIntValue());
-    mDelay(500);
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
   }
   i2c_end();
   return 0;

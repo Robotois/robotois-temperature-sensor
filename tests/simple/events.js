@@ -1,6 +1,6 @@
 const Temperature = require('../../index');
 
-const temp = new Temperature(1);
+const temp = new Temperature(3);
 temp.enableEvents();
 
 temp.on('medicion', (value) => {
