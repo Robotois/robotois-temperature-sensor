@@ -3,21 +3,6 @@ const EventEmitter = require('events').EventEmitter;
 const inherits = require('util').inherits;
 
 /**
- * Conditional callbacks
- * @param  {Bool} cond      Condition sentence that is evaluated
- * @param  {Func} onTrueCB  Callback that will be executed when the condition is evaluated true
- * @param  {Func} onFalseCB Callback that will be executed when the condition is evaluated false
- * @return {[type]}           [description]
- */
-function callbacks(cond, tempValue, onTrueCB, onFalseCB) {
-  if (cond) {
-    onTrueCB(tempValue);
-  } else {
-    onFalseCB(tempValue);
-  }
-}
-
-/**
  * Creates an instance of TemperatureSensor.
  * @param {int} port The port number where this component us connected.
  * @param {int} add The second argument.
@@ -54,48 +39,8 @@ TemperatureSensor.prototype.enableEvents = function enableEvents() {
   if (!this.eventInterval) {
     this.eventInterval = setInterval(() => {
       this.emit('medicion', this.temp.getIntValue());
-    }, 500); // 1000ms muestreo
+    }, 500);
   }
-};
-
-TemperatureSensor.prototype.equals = function equals(value, onTrue, onFalse) {
-  this.on('medicion', (tempValue) => {
-    if (tempValue == value) {
-      onTrue(tempValue);
-    } else {
-      onFalse(tempValue);
-    }
-  })
-};
-
-TemperatureSensor.prototype.lessThan = function lessThan(value, onTrue, onFalse) {
-  this.on('medicion', (tempValue) => {
-    if (tempValue < value) {
-      onTrue(tempValue);
-    } else {
-      onFalse(tempValue);
-    }
-  })
-};
-
-TemperatureSensor.prototype.moreThan = function moreThan(value, onTrue, onFalse) {
-  this.on('medicion', (tempValue) => {
-    if (tempValue > value) {
-      onTrue(tempValue);
-    } else {
-      onFalse(tempValue);
-    }
-  })
-};
-
-TemperatureSensor.prototype.between = function between(min, max, onTrue, onFalse) {
-  this.on('medicion', (tempValue) => {
-    if (tempValue >= min && tempValue <= max) {
-      onTrue(tempValue);
-    } else {
-      onFalse(tempValue);
-    }
-  })
 };
 
 TemperatureSensor.prototype.release = function release() {
@@ -106,3 +51,43 @@ TemperatureSensor.prototype.release = function release() {
 inherits(TemperatureSensor, EventEmitter);
 
 module.exports = TemperatureSensor;
+
+// TemperatureSensor.prototype.equals = function equals(value, onTrue, onFalse) {
+//   this.on('medicion', (tempValue) => {
+//     if (tempValue == value) {
+//       onTrue(tempValue);
+//     } else {
+//       onFalse(tempValue);
+//     }
+//   })
+// };
+//
+// TemperatureSensor.prototype.lessThan = function lessThan(value, onTrue, onFalse) {
+//   this.on('medicion', (tempValue) => {
+//     if (tempValue < value) {
+//       onTrue(tempValue);
+//     } else {
+//       onFalse(tempValue);
+//     }
+//   })
+// };
+//
+// TemperatureSensor.prototype.moreThan = function moreThan(value, onTrue, onFalse) {
+//   this.on('medicion', (tempValue) => {
+//     if (tempValue > value) {
+//       onTrue(tempValue);
+//     } else {
+//       onFalse(tempValue);
+//     }
+//   })
+// };
+//
+// TemperatureSensor.prototype.between = function between(min, max, onTrue, onFalse) {
+//   this.on('medicion', (tempValue) => {
+//     if (tempValue >= min && tempValue <= max) {
+//       onTrue(tempValue);
+//     } else {
+//       onFalse(tempValue);
+//     }
+//   })
+// };
