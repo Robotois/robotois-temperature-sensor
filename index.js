@@ -44,7 +44,6 @@ TemperatureSensor.prototype.enableEvents = function enableEvents(mqttConfig) {
   if (mqttConfig) {
     this.mqttClient = mqttConfig.mqttClient;
     this.myTopic = `sensors/temperature${mqttConfig.instance}`;
-    // this.mqttClient.publish('registerTopic', this.myTopic);
   }
   if (!this.eventInterval) {
     this.eventInterval = setInterval(() => {
@@ -66,43 +65,3 @@ TemperatureSensor.prototype.release = function release() {
 inherits(TemperatureSensor, EventEmitter);
 
 module.exports = TemperatureSensor;
-
-// TemperatureSensor.prototype.equals = function equals(value, onTrue, onFalse) {
-//   this.on('medicion', (tempValue) => {
-//     if (tempValue == value) {
-//       onTrue(tempValue);
-//     } else {
-//       onFalse(tempValue);
-//     }
-//   })
-// };
-//
-// TemperatureSensor.prototype.lessThan = function lessThan(value, onTrue, onFalse) {
-//   this.on('medicion', (tempValue) => {
-//     if (tempValue < value) {
-//       onTrue(tempValue);
-//     } else {
-//       onFalse(tempValue);
-//     }
-//   })
-// };
-//
-// TemperatureSensor.prototype.moreThan = function moreThan(value, onTrue, onFalse) {
-//   this.on('medicion', (tempValue) => {
-//     if (tempValue > value) {
-//       onTrue(tempValue);
-//     } else {
-//       onFalse(tempValue);
-//     }
-//   })
-// };
-//
-// TemperatureSensor.prototype.between = function between(min, max, onTrue, onFalse) {
-//   this.on('medicion', (tempValue) => {
-//     if (tempValue >= min && tempValue <= max) {
-//       onTrue(tempValue);
-//     } else {
-//       onFalse(tempValue);
-//     }
-//   })
-// };
