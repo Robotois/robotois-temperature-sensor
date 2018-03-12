@@ -103,7 +103,7 @@ void ADS1015::selectInput(uint8_t _inputAdd, uint8_t _gain){
     wBuf[2] = config_low;
 
     bcm2835_i2c_write(wBuf, 3);
-    std::this_thread::sleep_for(std::chrono::microseconds(500));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
 }
 
 /**

@@ -1,6 +1,6 @@
 {
   "name": "robotois-temperature-sensor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node library for the temperature sensor module",
   "main": "index.js",
   "scripts": {
