@@ -77,7 +77,7 @@ float TemperatureSensor::getValue(){
 int16_t TemperatureSensor::getIntValue(){
     selectPort(inputPort);
     float reading = analogModule->readInput();
-    printf("TempSensor voltage: %0.3f\n", reading);
+    // printf("TempSensor voltage: %0.3f\n", reading);
     return (int16_t)(std::round(reading*tempRatio));
 }
 
